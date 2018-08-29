@@ -57,8 +57,5 @@ var readStudent = (rn) => {
 };
 module.exports = {
     // addStudent: addStudent
-    addStudent,
-    listStudent,
-    removeStudent,
-    readStudent
+    addStudent, listStudent, removeStudent, readStudent
 };
