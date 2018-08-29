@@ -15,7 +15,6 @@ var fetchStudents = () => {
 var saveStudents = (students) => {
     fs.writeFileSync('students_data.json', JSON.stringify(students));
 };
-
 var addStudent = (rn, name, adrs) => {
     //console.log('adding student ', name, adrs);
     var students = fetchStudents();
@@ -34,8 +33,10 @@ var addStudent = (rn, name, adrs) => {
     }
 };
 
-var listStudent = (rn) => {
-    console.log('listing all students ');
+var listStudent = () => {
+    console.log('Showing all students ');
+    var students = fetchStudents();
+    console.log(students);
 };
 
 var removeStudent = (rn) => {
@@ -44,18 +45,15 @@ var removeStudent = (rn) => {
     var filteredStudents = students.filter((student) => student.rn !== rn);
     saveStudents(filteredStudents);
     return students.length !== filteredStudents.length;
-
 };
-
 var readStudent = (rn) => {
-    console.log(`Showing ${rn} student`);
+    console.log(`Showing ${rn}th student`);
     var students = fetchStudents();
     var filteredStudents = students.filter((student) => student.rn === rn);
     if (filteredStudents.length !== 0) {
         saveStudents(students);
         console.log(filteredStudents);
-    } else console.log(`Student ${rn} not found`);
-
+    } else console.log(`${rn}th Student not found`);
 };
 module.exports = {
     // addStudent: addStudent
@@ -64,20 +62,3 @@ module.exports = {
     removeStudent,
     readStudent
 };
-
-
-
-
-
-
-
-
-
-
-// module.exports.addStudent = () => {
-//     console.log('add Student');
-//     return 'New Student';
-// }
-// module.exports.addnum = (a,b) =>{
-//     return a+b;
-// }
